@@ -2,6 +2,8 @@
 
 package com.expressjs.wrapper
 
+import com.expressjs.dsl.RoutingHttpHandler
+
 open external class Application {
 
     /**
@@ -71,7 +73,9 @@ open external class Application {
 
     fun get(setting: String): String
 
-    fun get(route: String, callback: (req: Request, res: Response) -> Unit)
+    fun get(route: String, callback: RoutingHttpHandler)
+
+    fun get(route: String, callback: Router)
 
     fun param(name: String, handler: (req: Request, res: Response, next: NextResponse, value: Any, name: String) -> Any): Application
     fun param(name: Array<String>, handler: (req: Request, res: Response, next: NextResponse, value: Any, name: String) -> Any): Application
@@ -189,5 +193,6 @@ open external class Application {
     // fun use(path: String = definedExternally, router: Array<(req: Request, res: Response, next: (Error?) -> Unit) -> Unit>) // TODO : ApplicationRequestHandler<this>;
 }
 
+typealias Router = (req: Request, res: Response, next: NextResponse) -> Unit
 typealias Callback = () -> Unit
 typealias NextResponse = (Error?) -> Unit
