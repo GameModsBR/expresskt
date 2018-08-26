@@ -150,12 +150,13 @@ open external class Application {
      *    http.createServer(app).listen(80);
      *    https.createServer({ ... }, app).listen(443);
      */
-    fun listen(port: Int, hostname: String, backlog: Int, callback: Callback?) //TODO  http.Server;
+    fun listen(port: Int, hostname: String, backlog: Int, callback: Callback? = definedExternally) //TODO  http.Server;
 
-    fun listen(port: Int, hostname: String, callback: Callback?) // TODO http.Server;
-    fun listen(port: Int, callback: Callback?) // TODO http.Server;
-    fun listen(path: String, callback: Callback?) // TODO http.Server;
-    fun listen(handle: Any, callback: Callback?) // TODO http.Server;
+    fun listen(port: Int, hostname: String, callback: Callback? = definedExternally) // TODO http.Server;
+    fun listen(port: Int, callback: Callback? = definedExternally) // TODO http.Server;
+    fun listen(callback: Callback? = definedExternally) // TODO http.Server;
+    fun listen(path: String, callback: Callback? = definedExternally) // TODO http.Server;
+    fun listen(handle: Any, callback: Callback? = definedExternally) // TODO http.Server;
 
     val router: String
 
